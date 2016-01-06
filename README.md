@@ -1,7 +1,7 @@
 # ProgrammingProject
 
 ## Proposal "Nearby" 
-###- Location based notifications
+###- Location based notifications 
 
 
 ### Problem
