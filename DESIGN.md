@@ -1,4 +1,4 @@
-#Design Document
+#Design Document "Nearby"
 
 ###Concept
 Location based notification app which uses geofencing to monitor the location of the user and pushes a notification when the user is in radius of a venue he or she favorited. 
@@ -15,4 +15,10 @@ Location based notification app which uses geofencing to monitor the location of
 
 NOTE: UI is from the prototype, only changes when i have enough time to make it fancy. 
 
+Frameworks/api's:
+- MapKit
+- CoreLocation
+
 ![design_doc](doc/design_doc_2.png)
+
+
