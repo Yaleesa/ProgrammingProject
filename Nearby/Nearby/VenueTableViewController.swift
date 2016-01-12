@@ -69,8 +69,9 @@ class VenueTableViewController: UITableViewController {
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
+        let cellIdentifier = "VenueTableViewCell"
         let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath) as! VenueTableViewCell
-        
+
         cell.tapped = { [unowned self] (selectedCell) -> Void in
             let path = tableView.indexPathForRowAtPoint(selectedCell.center)!
             var selectedItem = self.venue[path.row]
