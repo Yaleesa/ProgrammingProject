@@ -21,4 +21,9 @@ Frameworks/api's:
 
 ![design_doc](doc/design_doc_2.png)
 
+###Model classes
+
+One model class for holding the name of the venues and their images.
+![design_doc](doc/modelclass.png)
+
 
