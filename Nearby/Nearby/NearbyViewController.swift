@@ -11,63 +11,85 @@ import MapKit
 import CoreLocation
 import SwiftLocation
 
-class NearbyViewController: UIViewController {
-
-    @IBOutlet weak var test: UILabel!
-    @IBOutlet weak var mapView: MKMapView!
+class NearbyViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
     
-//    var searchController:UISearchController!
-//    var annotation:MKAnnotation!
-//    var localSearchRequest:MKLocalSearchRequest!
-//    var localSearch:MKLocalSearch!
-//    var localSearchResponse:MKLocalSearchResponse!
-//    var error:NSError!
-//    var pointAnnotation:MKPointAnnotation!
-//    var pinAnnotationView:MKPinAnnotationView!
-//
-//    
-//    @IBAction func showSearchBar(sender: AnyObject) {
-//        searchController = UISearchController(searchResultsController: nil)
-//        searchController.hidesNavigationBarDuringPresentation = false
-//        self.searchController.searchBar.delegate = self
-//        presentViewController(searchController, animated: true, completion: nil)
-//    }
+
+    @IBOutlet weak var mapView: MKMapView!
+    var matchingItems: [MKMapItem] = [MKMapItem]()
+    
+    var locationManager = CLLocationManager()
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
-        do {
-            try SwiftLocation.shared.currentLocation(Accuracy.Room, timeout: 20, onSuccess: { (location) -> Void in
-                // location is a CLPlacemark
-                print("1. Location found \(location!.description)")
-                }) { (error) -> Void in
-                    print("1. Something went wrong -> \(error?.localizedDescription)")
-            }
-        } catch (let error) {
-            print("Error \(error)")
-        }
+        //checkLocationAuthorizationStatus()
+        
+        self.locationManager.delegate = self
+        self.locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        self.locationManager.requestWhenInUseAuthorization()
+        self.locationManager.startUpdatingLocation()
+        self.mapView.showsUserLocation = true
 
-        self.mapView.setUserTrackingMode(MKUserTrackingMode.Follow, animated: true);
+        //self.mapView.setUserTrackingMode(MKUserTrackingMode.Follow, animated: true);
+        
         
     }
-    var locationManager = CLLocationManager()
-    func checkLocationAuthorizationStatus() {
-        if CLLocationManager.authorizationStatus() == .AuthorizedWhenInUse {
-            mapView.showsUserLocation = true
-//            let userLocation = mapView.userLocation
-//            
-//            let region = MKCoordinateRegionMakeWithDistance(
-//                userLocation.location!.coordinate, 2000, 2000)
-//            
-//            mapView.setRegion(region, animated: true)
-        } else {
-            locationManager.requestWhenInUseAuthorization()
-        }
+    @IBAction func searchButton(sender: AnyObject) {
+        performSearch()
     }
     
+    func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation])
+    {
+        let location = locations.last
+        let center = CLLocationCoordinate2D(latitude: location!.coordinate.latitude, longitude: location!.coordinate.longitude)
+        let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 1, longitudeDelta: 1))
+        
+        self.mapView.setRegion(region, animated: true)
+        self.locationManager.stopUpdatingLocation()
+    }
+    
+    func locationManager(manager: CLLocationManager, didFailWithError error: NSError)
+    {
+        print("Errors: " + error.localizedDescription)
+    }
+    
+    
+    func performSearch() {
+        print("searching")
+        
+        matchingItems.removeAll()
+        let request = MKLocalSearchRequest()
+        request.naturalLanguageQuery = "Starbucks"
+        request.region = mapView.region
+
+        
+        let search = MKLocalSearch(request: request)
+        
+        search.startWithCompletionHandler { response,
+            error in guard let response = response else {
+                print("error")
+                return
+                
+            }
+            print("Matches found")
+            
+            for item in response.mapItems {
+                print("Name = \(item.name)")
+                print("Phone = \(item.phoneNumber)")
+                
+                self.matchingItems.append(item as MKMapItem)
+                print("Matching items = \(self.matchingItems.count)")
+                
+                let annotation = MKPointAnnotation()
+                annotation.coordinate = item.placemark.coordinate
+                annotation.title = item.name
+                self.mapView.addAnnotation(annotation)
+            }
+        }
+    }
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        //checkLocationAuthorizationStatus()
+        
     }
 
     override func didReceiveMemoryWarning() {

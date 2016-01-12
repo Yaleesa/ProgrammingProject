@@ -10,6 +10,11 @@ import UIKit
 
 class VenueTableViewController: UITableViewController {
     
+    //var selectedItem: AnyObject
+    
+    let defaults = NSUserDefaults.standardUserDefaults()
+    
+    
 
     var venue = [Venue]()
 
@@ -63,19 +68,23 @@ class VenueTableViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        // Table view cells are reused and should be dequeued using a cell identifier.
-        let cellIdentifier = "VenueTableViewCell"
+        
         let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath) as! VenueTableViewCell
         
+        cell.tapped = { [unowned self] (selectedCell) -> Void in
+            let path = tableView.indexPathForRowAtPoint(selectedCell.center)!
+            var selectedItem = self.venue[path.row]
+            print(selectedItem.dynamicType)
+            
+            print("the selected item is \(selectedItem.name)")
+        }
         
-        // Fetches the appropriate meal for the data source layout.
         let cellVenue = venue[indexPath.row]
 
         cell.venueLabel.text = cellVenue.name
         cell.venueImage.image = cellVenue.photo
         
-        
-    
+        cell.addButton.addTarget(self, action: "addFav:", forControlEvents: .TouchUpInside)
         
         return cell
     }
@@ -84,9 +93,58 @@ class VenueTableViewController: UITableViewController {
         let nav = self.navigationController?.navigationBar
 
         nav?.barStyle = UIBarStyle.Black
-//        nav?.tintColor = UIColor.yellowColor()
 
     }
+    @IBAction func addFav(sender: AnyObject) {
+        
+        //print(sender.tag)
+        
+        let addAlert = UIAlertController(title: "Favorites", message: "Do you want to add ** to your favorites?", preferredStyle: UIAlertControllerStyle.Alert)
+        
+        addAlert.addAction(UIAlertAction(title: "Add", style: .Default, handler: { (action: UIAlertAction!) in
+            
+            
+            
+            if self.defaults.arrayForKey("favoriteKey") != nil{
+                var storedFavorites = self.defaults.arrayForKey("favoriteKey")!
+                storedFavorites.append(["test"])
+                self.defaults.setObject(storedFavorites, forKey: "favoriteKey")
+                
+                
+            }else{
+                self.defaults.setObject(["test1"], forKey: "favoriteKey")
+                
+                
+            }
+            
+//            var favorites = self.defaults.arrayForKey("favoriteKey")!
+//            for item in favorites {
+//                print(item)
+//            }
+            
+
+            
+        }))
+        
+        addAlert.addAction(UIAlertAction(title: "Cancel", style: .Default, handler: { (action: UIAlertAction!) in
+            print("cancelled")
+        }))
+        
+        presentViewController(addAlert, animated: true, completion: nil)
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     /*
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath)

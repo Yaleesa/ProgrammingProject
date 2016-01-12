@@ -9,7 +9,8 @@
 import UIKit
 
 class VenueTableViewCell: UITableViewCell {
-
+    
+    var tapped: ((VenueTableViewCell) -> Void)?
 
     @IBOutlet weak var venueImage: UIImageView!
     @IBOutlet weak var venueLabel: UILabel!
@@ -18,6 +19,11 @@ class VenueTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+    }
+    
+    @IBAction func customAdd(sender: AnyObject) {
+        
+        tapped?(self)
     }
 
     override func setSelected(selected: Bool, animated: Bool) {

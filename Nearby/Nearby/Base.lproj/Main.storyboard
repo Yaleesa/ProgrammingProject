@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9060" systemVersion="15C40a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Pap-PI-hn6">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9060" systemVersion="15D13b" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Pap-PI-hn6">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
@@ -26,7 +26,7 @@
                                 <rect key="frame" x="0.0" y="136" width="600" height="90"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="bQH-Nv-rc3" id="WKX-B5-Use">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="89"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="89.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sLU-bx-CLB">
@@ -43,6 +43,10 @@
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="contactAdd" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ruO-u8-Aia">
                                             <rect key="frame" x="560" y="33" width="22" height="22"/>
                                             <animations/>
+                                            <connections>
+                                                <action selector="addFav:" destination="oYy-AY-Feh" eventType="touchUpInside" id="HG6-7V-B6h"/>
+                                                <action selector="customAdd:" destination="bQH-Nv-rc3" eventType="touchUpInside" id="toq-2g-Y0E"/>
+                                            </connections>
                                         </button>
                                     </subviews>
                                     <animations/>
@@ -84,11 +88,11 @@
                                 <rect key="frame" x="0.0" y="92" width="600" height="90"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="lwP-sn-NfA" id="3TQ-xj-QWt">
-                                    <rect key="frame" x="0.0" y="0.0" width="561" height="89"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="561" height="89.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Apple Store" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="a3u-5b-wHG">
-                                            <rect key="frame" x="119" y="0.0" width="442" height="89"/>
+                                            <rect key="frame" x="120" y="0.0" width="441" height="89.5"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <animations/>
                                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
@@ -96,7 +100,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="Apple Store" id="Cbg-kt-Ogl">
-                                            <rect key="frame" x="15" y="0.0" width="89" height="89"/>
+                                            <rect key="frame" x="15" y="0.0" width="90" height="89.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <animations/>
                                         </imageView>
@@ -117,7 +121,7 @@
             </objects>
             <point key="canvasLocation" x="1908" y="330"/>
         </scene>
-        <!--Map-->
+        <!--Nearby View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="NearbyViewController" customModule="Nearby" customModuleProvider="target" sceneMemberID="viewController">
@@ -143,15 +147,20 @@
                             <constraint firstAttribute="trailing" secondItem="S6E-ph-ktb" secondAttribute="trailing" id="omJ-EI-eQs"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Map" id="7R3-r4-YG6"/>
-                    <navigationItem key="navigationItem" id="9Le-U1-ZX5"/>
+                    <navigationItem key="navigationItem" id="9Le-U1-ZX5">
+                        <barButtonItem key="rightBarButtonItem" systemItem="search" id="bLH-Qu-n8b">
+                            <connections>
+                                <action selector="searchButton:" destination="BYZ-38-t0r" id="1v8-Xc-JDY"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="mapView" destination="S6E-ph-ktb" id="jAp-Os-nU6"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1908" y="1047"/>
+            <point key="canvasLocation" x="2720" y="1047"/>
         </scene>
         <!--Tab Bar View Controller-->
         <scene sceneID="xKz-YM-6sb">
@@ -166,7 +175,7 @@
                     <connections>
                         <segue destination="9yB-fA-7sU" kind="relationship" relationship="viewControllers" id="oR5-Me-z4N"/>
                         <segue destination="Uf9-wI-97R" kind="relationship" relationship="viewControllers" id="y0e-Dz-G1t"/>
-                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="OCL-gW-8j5"/>
+                        <segue destination="dR7-eL-eLd" kind="relationship" relationship="viewControllers" id="OCL-gW-8j5"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8YU-SO-vdM" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -176,7 +185,7 @@
         <!--Navigation Controller-->
         <scene sceneID="X94-h7-264">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" hidesBarsOnSwipe="YES" id="9yB-fA-7sU" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="9yB-fA-7sU" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" systemItem="search" id="ju4-pX-zLR"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="FKx-dj-Ebm">
@@ -212,6 +221,26 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Fb4-GF-uit" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1096" y="330"/>
+        </scene>
+        <!--Map-->
+        <scene sceneID="raB-gf-wc4">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="dR7-eL-eLd" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Map" id="7R3-r4-YG6"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Lna-gk-mnl">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <animations/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="ut9-eR-gQq"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="XGf-Np-Tzl" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1908" y="1047"/>
         </scene>
     </scenes>
     <resources>
