@@ -34,6 +34,11 @@
 - Cellen van VenueTableViewCell interactble gemaakt, UIAlertController aan de plus-button gehangen. 
 - Honderd jaar over gedaan om de data die in de custom cellen staan door te geven aan NSUSerDefaults via een actie button. De data word nu ogehaald in de TableView functie en moet doorgegeven worden aan de IBAction van de plusbutton. Dit kan niet omdat de variabele waarin het word opgeslagen niet de functie uit kan. geprobeerd global te maken, maar dan gaat hij zeuren over types. Kan niet achterhalen wat voor type het is. > julian morgen vragen.
 
+###Day 8 Woensdag
+- VenueTableView en FavoriteTableView werkt nu goed met opslaan en verwijderen van favorieten. (slide to delete) NSUserdefaults update mee.
+- Nest step: de favorieten op de map laten plotten. 
+
+
 
 
 
