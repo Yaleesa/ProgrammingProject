@@ -26,6 +26,7 @@
 		528297681C3ED5ED0003C8B2 /* VenueTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 528297631C3ED5ED0003C8B2 /* VenueTableViewController.xib */; };
 		528297691C3ED5ED0003C8B2 /* VenueTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 528297631C3ED5ED0003C8B2 /* VenueTableViewController.xib */; };
 		5282976B1C3FC29C0003C8B2 /* VenueTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5282976A1C3FC29C0003C8B2 /* VenueTableViewCell.swift */; };
+		5288BF6B1C466543009A9280 /* FavoriteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5288BF6A1C466543009A9280 /* FavoriteTableViewCell.swift */; };
 		E60918F7576D72C6B17ABCB8 /* Pods_Nearby.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 68E9DCE5BE2D0507DEFBD549 /* Pods_Nearby.framework */; };
 /* End PBXBuildFile section */
 
@@ -67,6 +68,7 @@
 		528297621C3ED5ED0003C8B2 /* VenueTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VenueTableViewController.swift; sourceTree = "<group>"; };
 		528297631C3ED5ED0003C8B2 /* VenueTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VenueTableViewController.xib; sourceTree = "<group>"; };
 		5282976A1C3FC29C0003C8B2 /* VenueTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VenueTableViewCell.swift; sourceTree = "<group>"; };
+		5288BF6A1C466543009A9280 /* FavoriteTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteTableViewCell.swift; sourceTree = "<group>"; };
 		68E9DCE5BE2D0507DEFBD549 /* Pods_Nearby.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Nearby.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6901873877C2AAE4E24AFA7D /* Pods-Nearby.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Nearby.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Nearby/Pods-Nearby.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -124,10 +126,9 @@
 			children = (
 				528297231C3D43E90003C8B2 /* AppDelegate.swift */,
 				528297551C3EA55E0003C8B2 /* TabBarViewController.swift */,
-				528297621C3ED5ED0003C8B2 /* VenueTableViewController.swift */,
-				5282976A1C3FC29C0003C8B2 /* VenueTableViewCell.swift */,
-				528297251C3D43E90003C8B2 /* NearbyViewController.swift */,
-				522AFEE21C40601E00B0C0A6 /* FavoritesTableViewController.swift */,
+				5288BF6C1C467BA0009A9280 /* VenueTableView */,
+				5288BF6D1C467BBD009A9280 /* MapView */,
+				5288BF6E1C467BCC009A9280 /* FavoritesTableView */,
 				528297271C3D43E90003C8B2 /* Main.storyboard */,
 				5282972A1C3D43E90003C8B2 /* Assets.xcassets */,
 				5282972C1C3D43E90003C8B2 /* LaunchScreen.storyboard */,
@@ -154,6 +155,32 @@
 				528297451C3D43EA0003C8B2 /* Info.plist */,
 			);
 			path = NearbyUITests;
+			sourceTree = "<group>";
+		};
+		5288BF6C1C467BA0009A9280 /* VenueTableView */ = {
+			isa = PBXGroup;
+			children = (
+				528297621C3ED5ED0003C8B2 /* VenueTableViewController.swift */,
+				5282976A1C3FC29C0003C8B2 /* VenueTableViewCell.swift */,
+			);
+			name = VenueTableView;
+			sourceTree = "<group>";
+		};
+		5288BF6D1C467BBD009A9280 /* MapView */ = {
+			isa = PBXGroup;
+			children = (
+				528297251C3D43E90003C8B2 /* NearbyViewController.swift */,
+			);
+			name = MapView;
+			sourceTree = "<group>";
+		};
+		5288BF6E1C467BCC009A9280 /* FavoritesTableView */ = {
+			isa = PBXGroup;
+			children = (
+				522AFEE21C40601E00B0C0A6 /* FavoritesTableViewController.swift */,
+				5288BF6A1C466543009A9280 /* FavoriteTableViewCell.swift */,
+			);
+			name = FavoritesTableView;
 			sourceTree = "<group>";
 		};
 		6F9A2F391ABD8E28CCAE235C /* Pods */ = {
@@ -359,6 +386,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				528297641C3ED5ED0003C8B2 /* VenueTableViewController.swift in Sources */,
+				5288BF6B1C466543009A9280 /* FavoriteTableViewCell.swift in Sources */,
 				528297561C3EA55E0003C8B2 /* TabBarViewController.swift in Sources */,
 				528297261C3D43E90003C8B2 /* NearbyViewController.swift in Sources */,
 				5282976B1C3FC29C0003C8B2 /* VenueTableViewCell.swift in Sources */,

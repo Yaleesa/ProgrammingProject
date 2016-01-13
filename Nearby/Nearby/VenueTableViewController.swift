@@ -10,6 +10,7 @@ import UIKit
 
 class VenueTableViewController: UITableViewController {
     
+    @IBOutlet var venueTableView: UITableView!
     //var selectedItem: AnyObject
     
     let defaults = NSUserDefaults.standardUserDefaults()
@@ -74,7 +75,7 @@ class VenueTableViewController: UITableViewController {
 
         cell.tapped = { [unowned self] (selectedCell) -> Void in
             let path = tableView.indexPathForRowAtPoint(selectedCell.center)!
-            var selectedItem = self.venue[path.row]
+            let selectedItem = self.venue[path.row]
             print(selectedItem.dynamicType)
             
             print("the selected item is \(selectedItem.name)")
@@ -82,9 +83,12 @@ class VenueTableViewController: UITableViewController {
         
         let cellVenue = venue[indexPath.row]
 
+
         cell.venueLabel.text = cellVenue.name
         cell.venueImage.image = cellVenue.photo
         
+        
+        cell.addButton.tag = indexPath.row
         cell.addButton.addTarget(self, action: "addFav:", forControlEvents: .TouchUpInside)
         
         return cell
@@ -98,30 +102,33 @@ class VenueTableViewController: UITableViewController {
     }
     @IBAction func addFav(sender: AnyObject) {
         
-        //print(sender.tag)
+        print(sender.tag)
+    
+//        print(venueTableView.cont)
         
-        let addAlert = UIAlertController(title: "Favorites", message: "Do you want to add ** to your favorites?", preferredStyle: UIAlertControllerStyle.Alert)
+        let addAlert = UIAlertController(title: "Favorites", message: "Do you want to add \(venue[sender.tag].name) to your favorites?", preferredStyle: UIAlertControllerStyle.Alert)
         
         addAlert.addAction(UIAlertAction(title: "Add", style: .Default, handler: { (action: UIAlertAction!) in
             
             
             
-            if self.defaults.arrayForKey("favoriteKey") != nil{
-                var storedFavorites = self.defaults.arrayForKey("favoriteKey")!
-                storedFavorites.append(["test"])
+            if self.defaults.stringArrayForKey("favoriteKey") != nil{
+                var storedFavorites = self.defaults.stringArrayForKey("favoriteKey")!
+                storedFavorites.append("\(self.venue[sender.tag].name)")
                 self.defaults.setObject(storedFavorites, forKey: "favoriteKey")
+                print("Niet NIL is gebeurd")
                 
-                
+            
             }else{
-                self.defaults.setObject(["test1"], forKey: "favoriteKey")
-                
+                self.defaults.setObject(["\(self.venue[sender.tag].name)"], forKey: "favoriteKey")
+                print("wel NIL is gebeurd")
                 
             }
             
-//            var favorites = self.defaults.arrayForKey("favoriteKey")!
-//            for item in favorites {
-//                print(item)
-//            }
+            var favorites = self.defaults.arrayForKey("favoriteKey")!
+            for item in favorites {
+                print(item)
+            }
             
 
             

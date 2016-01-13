@@ -9,9 +9,19 @@
 import UIKit
 
 class FavoritesTableViewController: UITableViewController {
+    
+
+    let defaults = NSUserDefaults.standardUserDefaults()
+    
+    var storedFavorites: [String] = ["No Favorites"]
+    
+    //print(FavData())
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        FavData()
+        
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -34,44 +44,61 @@ class FavoritesTableViewController: UITableViewController {
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 1
+        return storedFavorites.count
     }
 
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as! UITableViewCell
+        let cellIdentifier = "FavoriteTableViewCell"
+        let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath) as! FavoriteTableViewCell
+
+        
+        cell.favLabel.text = storedFavorites[indexPath.row]
+        
+        var imageName = UIImage(named: storedFavorites[indexPath.row])
+        cell.favImage?.image = imageName
 
         return cell
     }
     
     override func viewDidAppear(animated: Bool) {
-        
         let nav = self.navigationController?.navigationBar
-        
         nav?.barStyle = UIBarStyle.Black
-        //        nav?.tintColor = UIColor.yellowColor()
         
-    }
+        FavData()
+        self.tableView.reloadData()
 
-    /*
-    // Override to support conditional editing of the table view.
+    }
+    
+    func FavData() -> [String] {
+        if self.defaults.stringArrayForKey("favoriteKey") != nil{
+            storedFavorites = self.defaults.stringArrayForKey("favoriteKey")!
+        }else{
+            storedFavorites = ["No Favorites"]
+        }
+        print(storedFavorites)
+        return storedFavorites
+    }
+    
+     //Override to support conditional editing of the table view.
     override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
+         //Return false if you do not want the specified item to be editable.
         return true
     }
-    */
+    
 
-    /*
-    // Override to support editing the table view.
+    
+     //Override to support editing the table view.
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if editingStyle == .Delete {
-            // Delete the row from the data source
+            //Delete the row from the data source
+            storedFavorites.removeAtIndex(indexPath.row)
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-        } else if editingStyle == .Insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
+            defaults.setObject(storedFavorites, forKey: "favoriteKey")
+
+            
+        }
     }
-    */
 
     /*
     // Override to support rearranging the table view.

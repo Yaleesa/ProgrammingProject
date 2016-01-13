@@ -69,6 +69,9 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Venues" id="oid-85-S0y"/>
+                    <connections>
+                        <outlet property="venueTableView" destination="Ehu-86-BKR" id="W8h-g2-LeN"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ws5-YQ-bsr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -78,36 +81,38 @@
         <scene sceneID="JiW-7p-VxO">
             <objects>
                 <tableViewController id="IS5-kZ-cPq" customClass="FavoritesTableViewController" customModule="Nearby" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="Mki-yh-Zxh">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="90" sectionHeaderHeight="28" sectionFooterHeight="28" id="Mki-yh-Zxh">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="checkmark" indentationWidth="10" reuseIdentifier="Cell" textLabel="a3u-5b-wHG" imageView="Cbg-kt-Ogl" rowHeight="90" style="IBUITableViewCellStyleDefault" id="lwP-sn-NfA">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="FavoriteTableViewCell" rowHeight="90" id="lwP-sn-NfA" customClass="FavoriteTableViewCell" customModule="Nearby" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="92" width="600" height="90"/>
                                 <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="lwP-sn-NfA" id="3TQ-xj-QWt">
-                                    <rect key="frame" x="0.0" y="0.0" width="561" height="89.5"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" restorationIdentifier="FavoriteTableViewCell" tableViewCell="lwP-sn-NfA" id="3TQ-xj-QWt">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="89.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Apple Store" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="a3u-5b-wHG">
-                                            <rect key="frame" x="120" y="0.0" width="441" height="89.5"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <animations/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="Apple Store" id="Cbg-kt-Ogl">
-                                            <rect key="frame" x="15" y="0.0" width="90" height="89.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nNc-0U-Jsv">
+                                            <rect key="frame" x="0.0" y="0.0" width="90" height="90"/>
                                             <animations/>
                                         </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dHp-xh-H6D">
+                                            <rect key="frame" x="98" y="34" width="154" height="21"/>
+                                            <animations/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
                                     </subviews>
                                     <animations/>
                                 </tableViewCellContentView>
                                 <animations/>
+                                <connections>
+                                    <outlet property="favImage" destination="nNc-0U-Jsv" id="V5E-b6-etE"/>
+                                    <outlet property="favLabel" destination="dHp-xh-H6D" id="1Nr-r0-vOP"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -121,7 +126,7 @@
             </objects>
             <point key="canvasLocation" x="1908" y="330"/>
         </scene>
-        <!--Nearby View Controller-->
+        <!--Map-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="NearbyViewController" customModule="Nearby" customModuleProvider="target" sceneMemberID="viewController">
@@ -147,7 +152,7 @@
                             <constraint firstAttribute="trailing" secondItem="S6E-ph-ktb" secondAttribute="trailing" id="omJ-EI-eQs"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="9Le-U1-ZX5">
+                    <navigationItem key="navigationItem" title="Map" id="9Le-U1-ZX5">
                         <barButtonItem key="rightBarButtonItem" systemItem="search" id="bLH-Qu-n8b">
                             <connections>
                                 <action selector="searchButton:" destination="BYZ-38-t0r" id="1v8-Xc-JDY"/>
@@ -243,7 +248,4 @@
             <point key="canvasLocation" x="1908" y="1047"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="Apple Store" width="2000" height="2000"/>
-    </resources>
 </document>
