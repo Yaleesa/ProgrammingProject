@@ -27,6 +27,7 @@
 		528297691C3ED5ED0003C8B2 /* VenueTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 528297631C3ED5ED0003C8B2 /* VenueTableViewController.xib */; };
 		5282976B1C3FC29C0003C8B2 /* VenueTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5282976A1C3FC29C0003C8B2 /* VenueTableViewCell.swift */; };
 		5288BF6B1C466543009A9280 /* FavoriteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5288BF6A1C466543009A9280 /* FavoriteTableViewCell.swift */; };
+		5288BF701C48043E009A9280 /* TestLocations.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 5288BF6F1C48043E009A9280 /* TestLocations.gpx */; };
 		E60918F7576D72C6B17ABCB8 /* Pods_Nearby.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 68E9DCE5BE2D0507DEFBD549 /* Pods_Nearby.framework */; };
 /* End PBXBuildFile section */
 
@@ -69,6 +70,7 @@
 		528297631C3ED5ED0003C8B2 /* VenueTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VenueTableViewController.xib; sourceTree = "<group>"; };
 		5282976A1C3FC29C0003C8B2 /* VenueTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VenueTableViewCell.swift; sourceTree = "<group>"; };
 		5288BF6A1C466543009A9280 /* FavoriteTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteTableViewCell.swift; sourceTree = "<group>"; };
+		5288BF6F1C48043E009A9280 /* TestLocations.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = TestLocations.gpx; sourceTree = "<group>"; };
 		68E9DCE5BE2D0507DEFBD549 /* Pods_Nearby.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Nearby.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6901873877C2AAE4E24AFA7D /* Pods-Nearby.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Nearby.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Nearby/Pods-Nearby.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -170,6 +172,7 @@
 			isa = PBXGroup;
 			children = (
 				528297251C3D43E90003C8B2 /* NearbyViewController.swift */,
+				5288BF6F1C48043E009A9280 /* TestLocations.gpx */,
 			);
 			name = MapView;
 			sourceTree = "<group>";
@@ -271,6 +274,11 @@
 				TargetAttributes = {
 					5282971F1C3D43E90003C8B2 = {
 						CreatedOnToolsVersion = 7.1.1;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+						};
 					};
 					528297331C3D43E90003C8B2 = {
 						CreatedOnToolsVersion = 7.1.1;
@@ -310,6 +318,7 @@
 				5282972E1C3D43E90003C8B2 /* LaunchScreen.storyboard in Resources */,
 				5282972B1C3D43E90003C8B2 /* Assets.xcassets in Resources */,
 				528297291C3D43E90003C8B2 /* Main.storyboard in Resources */,
+				5288BF701C48043E009A9280 /* TestLocations.gpx in Resources */,
 				528297671C3ED5ED0003C8B2 /* VenueTableViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

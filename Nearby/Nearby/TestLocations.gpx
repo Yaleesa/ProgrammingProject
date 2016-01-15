@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<gpx version="1.1" creator="Xcode">
+    <wpt lat="52.354453" lon="4.955359">
+         <name>SciencePark</name>
+    </wpt>
+    <wpt lat="52.363491" lon="4.881355">
+        <name>Stad</name>
+    </wpt>
+    <wpt lat="52.361486" lon="4.881635">
+        <name>Stad</name>
+    </wpt>
+</gpx>

@@ -13,6 +13,8 @@ class FavoritesTableViewController: UITableViewController {
 
     let defaults = NSUserDefaults.standardUserDefaults()
     
+
+    
     var storedFavorites: [String] = ["No Favorites"]
     
     //print(FavData())
@@ -55,7 +57,7 @@ class FavoritesTableViewController: UITableViewController {
         
         cell.favLabel.text = storedFavorites[indexPath.row]
         
-        var imageName = UIImage(named: storedFavorites[indexPath.row])
+        let imageName = UIImage(named: storedFavorites[indexPath.row])
         cell.favImage?.image = imageName
 
         return cell

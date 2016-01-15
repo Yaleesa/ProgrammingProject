@@ -9,20 +9,27 @@
 import UIKit
 import MapKit
 import CoreLocation
-import SwiftLocation
+
 
 class NearbyViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
     
+    let defaults = NSUserDefaults.standardUserDefaults()
+    
+    var storedFavorites: [String]?
+
+    
+    var regionsToMonitor: [CLRegion] = []
 
     @IBOutlet weak var mapView: MKMapView!
+    
     var matchingItems: [MKMapItem] = [MKMapItem]()
     
     var locationManager = CLLocationManager()
-
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //checkLocationAuthorizationStatus()
         
         self.locationManager.delegate = self
         self.locationManager.desiredAccuracy = kCLLocationAccuracyBest
@@ -30,19 +37,22 @@ class NearbyViewController: UIViewController, MKMapViewDelegate, CLLocationManag
         self.locationManager.startUpdatingLocation()
         self.mapView.showsUserLocation = true
 
-        //self.mapView.setUserTrackingMode(MKUserTrackingMode.Follow, animated: true);
-        
         
     }
     @IBAction func searchButton(sender: AnyObject) {
-        performSearch()
+        //performSearch("Starbucks")
+        matchingItems.removeAll()
+        regionsToMonitor.removeAll()
+        let annotationsToRemove = mapView.annotations.filter { $0 !== mapView.userLocation }
+        mapView.removeAnnotations( annotationsToRemove )
+        searchData()
     }
     
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation])
     {
         let location = locations.last
         let center = CLLocationCoordinate2D(latitude: location!.coordinate.latitude, longitude: location!.coordinate.longitude)
-        let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 1, longitudeDelta: 1))
+        let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 0.5, longitudeDelta: 0.5))
         
         self.mapView.setRegion(region, animated: true)
         self.locationManager.stopUpdatingLocation()
@@ -53,13 +63,40 @@ class NearbyViewController: UIViewController, MKMapViewDelegate, CLLocationManag
         print("Errors: " + error.localizedDescription)
     }
     
+    func searchData() {
+        
+        if self.defaults.stringArrayForKey("favoriteKey")! != []{
+            storedFavorites = self.defaults.stringArrayForKey("favoriteKey")!
+            print(storedFavorites)
+            
+            for item in storedFavorites! {
+                print(item)
+                performSearch(item)
+                
+                
+            }
+        }else{
+            print("geen items")
+            let actionSheetController: UIAlertController = UIAlertController(title: "Error", message: "You have no Favorites!", preferredStyle: .ActionSheet)
+            
+            //Create and add the Cancel action
+            let cancelAction: UIAlertAction = UIAlertAction(title: "Ok!", style: .Cancel) { action -> Void in
+                //Just dismiss the action sheet
+            }
+            actionSheetController.addAction(cancelAction)
+            self.presentViewController(actionSheetController, animated: true, completion: nil)
+        }
+        
+    }
     
-    func performSearch() {
+    
+    func performSearch(input: String) {
         print("searching")
         
-        matchingItems.removeAll()
+        
+        
         let request = MKLocalSearchRequest()
-        request.naturalLanguageQuery = "Starbucks"
+        request.naturalLanguageQuery = input
         request.region = mapView.region
 
         
@@ -76,7 +113,7 @@ class NearbyViewController: UIViewController, MKMapViewDelegate, CLLocationManag
             for item in response.mapItems {
                 print("Name = \(item.name)")
                 print("Phone = \(item.phoneNumber)")
-                
+            
                 self.matchingItems.append(item as MKMapItem)
                 print("Matching items = \(self.matchingItems.count)")
                 
@@ -84,9 +121,78 @@ class NearbyViewController: UIViewController, MKMapViewDelegate, CLLocationManag
                 annotation.coordinate = item.placemark.coordinate
                 annotation.title = item.name
                 self.mapView.addAnnotation(annotation)
+                //self.startMonitoring(item)
+
+                
             }
         }
     }
+    
+    func makeRegions(location: MKMapItem) -> CLRegion {
+        let latitude: CLLocationDegrees = location.placemark.location!.coordinate.latitude
+        let longitude: CLLocationDegrees = location.placemark.location!.coordinate.longitude
+        
+        let center: CLLocationCoordinate2D = CLLocationCoordinate2DMake(latitude, longitude)
+        let radius: CLLocationDistance = CLLocationDistance(200.0)
+        let identifier:String = location.name!
+        
+        let geoRegion: CLCircularRegion = CLCircularRegion(center: center, radius: radius, identifier: identifier)
+        
+        //geoRegion.notifyOnEntry = (location.eventType == .OnEntry)
+        //geoRegion.notifyOnExit = !geoRegion.notifyOnEntry
+        
+        return geoRegion
+        
+    }
+    
+    func startMonitoring(){
+        locationManager.requestAlwaysAuthorization()
+        
+        for item in matchingItems {
+            regionsToMonitor.append(makeRegions(item))
+
+        }
+        
+        for item in regionsToMonitor {
+            print("ITEM TO MONITOR \(item)")
+            locationManager.startMonitoringForRegion(item)
+        }
+        
+
+    }
+    @IBAction func monitor(sender: AnyObject) {
+        
+//        
+//        let currRegion = CLCircularRegion(center: CLLocationCoordinate2D(latitude: 52.354453, longitude: 4.955359), radius: 200, identifier: "Home")
+//        locationManager.startMonitoringForRegion(currRegion)
+            //var item1 = testitems[0]
+            //print(item1)
+        startMonitoring()
+        print(regionsToMonitor.count)
+        print(locationManager.monitoredRegions)
+        }
+        
+    
+    @IBAction func stop(sender: AnyObject) {
+        stopMonitoring()
+    }
+    
+    func stopMonitoring() {
+        print("stopped monitoring")
+        print(locationManager.monitoredRegions)
+        for region in locationManager.monitoredRegions {
+            //print(region)
+            if let circularRegion = region as? CLCircularRegion {
+                locationManager.stopMonitoringForRegion(circularRegion)
+            }
+        }
+    }
+
+    func locationManager(manager: CLLocationManager, didEnterRegion region: CLRegion) {
+        print("Entering region")
+        print(region.description)
+    }
+    
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         

@@ -4,6 +4,7 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
     </dependencies>
     <scenes>
         <!--Items-->
@@ -138,7 +139,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="S6E-ph-ktb">
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="S6E-ph-ktb">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="551"/>
                                 <animations/>
                             </mapView>
@@ -152,13 +153,29 @@
                             <constraint firstAttribute="trailing" secondItem="S6E-ph-ktb" secondAttribute="trailing" id="omJ-EI-eQs"/>
                         </constraints>
                     </view>
+                    <toolbarItems>
+                        <barButtonItem title="Item" id="hga-Fz-2X3"/>
+                    </toolbarItems>
                     <navigationItem key="navigationItem" title="Map" id="9Le-U1-ZX5">
-                        <barButtonItem key="rightBarButtonItem" systemItem="search" id="bLH-Qu-n8b">
-                            <connections>
-                                <action selector="searchButton:" destination="BYZ-38-t0r" id="1v8-Xc-JDY"/>
-                            </connections>
-                        </barButtonItem>
+                        <rightBarButtonItems>
+                            <barButtonItem systemItem="search" id="bLH-Qu-n8b">
+                                <connections>
+                                    <action selector="searchButton:" destination="BYZ-38-t0r" id="1v8-Xc-JDY"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem title="Go" id="jh2-vd-fTt">
+                                <connections>
+                                    <action selector="monitor:" destination="BYZ-38-t0r" id="9Ck-Cv-Wy9"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem title="Stop" id="BZ2-do-6bA">
+                                <connections>
+                                    <action selector="stop:" destination="BYZ-38-t0r" id="U6g-wh-cjR"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
                     </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="mapView" destination="S6E-ph-ktb" id="jAp-Os-nU6"/>
                     </connections>
