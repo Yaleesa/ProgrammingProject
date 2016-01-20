@@ -84,7 +84,7 @@
       <AdditionalOptions>
       </AdditionalOptions>
       <LocationScenarioReference
-         identifier = "../Nearby/TestLocations.gpx"
+         identifier = "../../../../Downloads/gpxgmap_converted-2.gpx"
          referenceType = "0">
       </LocationScenarioReference>
    </LaunchAction>

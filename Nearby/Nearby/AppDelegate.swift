@@ -7,15 +7,21 @@
 //
 
 import UIKit
+import CoreLocation
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
-
+class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate {
+    
     var window: UIWindow?
+    let locationManager = CLLocationManager()
 
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
+        locationManager.delegate = self
+        locationManager.requestAlwaysAuthorization()
+        application.registerUserNotificationSettings(UIUserNotificationSettings(forTypes: [.Alert , .Badge , .Sound], categories: nil))
+        UIApplication.sharedApplication().cancelAllLocalNotifications()
         return true
     }
 
@@ -39,6 +45,39 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationWillTerminate(application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+    }
+    func handleRegionEvent(region: CLRegion!) {
+        // Show an alert if application is active
+        if UIApplication.sharedApplication().applicationState == .Active {
+            //if let message = {
+                if let viewController = window?.rootViewController {
+                    let title = "Nearby"
+                    let message = "\(region.identifier) is nearby!"
+                    let alert = UIAlertController(title: title, message: message, preferredStyle: .Alert)
+                    let action = UIAlertAction(title: "OK", style: .Cancel, handler: nil)
+                    alert.addAction(action)
+                    viewController.presentViewController(alert, animated: true, completion: nil)
+                }
+            //}
+        } else {
+            // Otherwise present a local notification
+            let notification = UILocalNotification()
+            notification.alertBody = "\(region.identifier) is Nearby!"
+            notification.soundName = "Default";
+            UIApplication.sharedApplication().presentLocalNotificationNow(notification)
+        }
+    }
+
+    func locationManager(manager: CLLocationManager, didEnterRegion region: CLRegion) {
+        if region is CLCircularRegion {
+            handleRegionEvent(region)
+        }
+    }
+    
+    func locationManager(manager: CLLocationManager, didExitRegion region: CLRegion) {
+        if region is CLCircularRegion {
+            print("left region")
+        }
     }
 
 

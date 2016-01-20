@@ -48,7 +48,10 @@ class VenueTableViewController: UITableViewController {
         let photo5 = UIImage(named: "Coffee Company")!
         let venue5 = Venue(name: "Coffee Company", photo: photo5)
         
-        venue += [venue1, venue2, venue3, venue4, venue5]
+        let photo6 = UIImage(named: "Albert Heijn")!
+        let venue6 = Venue(name: "Albert Heijn", photo: photo6)
+        
+        venue += [venue1, venue2, venue3, venue4, venue5, venue6]
     }
 
     override func didReceiveMemoryWarning() {
@@ -101,37 +104,23 @@ class VenueTableViewController: UITableViewController {
 
     }
     @IBAction func addFav(sender: AnyObject) {
-        
-        print(sender.tag)
-    
-//        print(venueTableView.cont)
+
         
         let addAlert = UIAlertController(title: "Favorites", message: "Do you want to add \(venue[sender.tag].name) to your favorites?", preferredStyle: UIAlertControllerStyle.Alert)
         
         addAlert.addAction(UIAlertAction(title: "Add", style: .Default, handler: { (action: UIAlertAction!) in
             
-            
-            
             if self.defaults.stringArrayForKey("favoriteKey") != nil{
                 var storedFavorites = self.defaults.stringArrayForKey("favoriteKey")!
                 storedFavorites.append("\(self.venue[sender.tag].name)")
                 self.defaults.setObject(storedFavorites, forKey: "favoriteKey")
-                print("Niet NIL is gebeurd")
                 
-            
             }else{
                 self.defaults.setObject(["\(self.venue[sender.tag].name)"], forKey: "favoriteKey")
-                print("wel NIL is gebeurd")
-                
             }
             
-            var favorites = self.defaults.arrayForKey("favoriteKey")!
-            for item in favorites {
-                print(item)
-            }
-            
-
-            
+            NSNotificationCenter.defaultCenter().postNotificationName("reload", object: nil)
+           
         }))
         
         addAlert.addAction(UIAlertAction(title: "Cancel", style: .Default, handler: { (action: UIAlertAction!) in

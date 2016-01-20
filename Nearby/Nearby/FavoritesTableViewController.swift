@@ -78,7 +78,7 @@ class FavoritesTableViewController: UITableViewController {
         }else{
             storedFavorites = ["No Favorites"]
         }
-        print(storedFavorites)
+
         return storedFavorites
     }
     
@@ -97,7 +97,11 @@ class FavoritesTableViewController: UITableViewController {
             storedFavorites.removeAtIndex(indexPath.row)
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
             defaults.setObject(storedFavorites, forKey: "favoriteKey")
+            let nearbyView = NearbyViewController()
+//            nearbyView.stopMonitoring()
+            //nearbyView.restartSearchandMonitor()
 
+            NSNotificationCenter.defaultCenter().postNotificationName("reload", object: nil)
             
         }
     }

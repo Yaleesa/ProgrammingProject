@@ -38,6 +38,22 @@
 - VenueTableView en FavoriteTableView werkt nu goed met opslaan en verwijderen van favorieten. (slide to delete) NSUserdefaults update mee.
 - Nest step: de favorieten op de map laten plotten. 
 
+###Day 9 Donderdag
+- Search uitvoeren op de favorieten en op map geplot
+- MakeRegion functie gemaakt om MKmapitems om te zetten naar CLregions
+- Startmonitor aangemaakt om de CLregions te monitoren
+
+###Day 10 Vrijdag
+- debuggen en testen
+
+###Zondag 
+- notificaties gemaakt en fieldtesten 
+- werkt, maar alleen met unieke identifiers
+- en de accuratie is bagger
+
+
+
+
 
 
 

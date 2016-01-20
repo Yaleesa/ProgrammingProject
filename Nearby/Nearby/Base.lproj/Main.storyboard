@@ -4,7 +4,6 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
-        <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
     </dependencies>
     <scenes>
         <!--Items-->
@@ -27,7 +26,7 @@
                                 <rect key="frame" x="0.0" y="136" width="600" height="90"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="bQH-Nv-rc3" id="WKX-B5-Use">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="89.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="89"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sLU-bx-CLB">
@@ -92,7 +91,7 @@
                                 <rect key="frame" x="0.0" y="92" width="600" height="90"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" restorationIdentifier="FavoriteTableViewCell" tableViewCell="lwP-sn-NfA" id="3TQ-xj-QWt">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="89.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="89"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nNc-0U-Jsv">
@@ -157,23 +156,11 @@
                         <barButtonItem title="Item" id="hga-Fz-2X3"/>
                     </toolbarItems>
                     <navigationItem key="navigationItem" title="Map" id="9Le-U1-ZX5">
-                        <rightBarButtonItems>
-                            <barButtonItem systemItem="search" id="bLH-Qu-n8b">
-                                <connections>
-                                    <action selector="searchButton:" destination="BYZ-38-t0r" id="1v8-Xc-JDY"/>
-                                </connections>
-                            </barButtonItem>
-                            <barButtonItem title="Go" id="jh2-vd-fTt">
-                                <connections>
-                                    <action selector="monitor:" destination="BYZ-38-t0r" id="9Ck-Cv-Wy9"/>
-                                </connections>
-                            </barButtonItem>
-                            <barButtonItem title="Stop" id="BZ2-do-6bA">
-                                <connections>
-                                    <action selector="stop:" destination="BYZ-38-t0r" id="U6g-wh-cjR"/>
-                                </connections>
-                            </barButtonItem>
-                        </rightBarButtonItems>
+                        <barButtonItem key="rightBarButtonItem" systemItem="refresh" id="bLH-Qu-n8b">
+                            <connections>
+                                <action selector="searchButton:" destination="BYZ-38-t0r" id="1v8-Xc-JDY"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
