@@ -46,6 +46,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
     func applicationWillTerminate(application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
+    
+    
+//    func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+//        print(manager.location)
+//        
+//        
+//    }
+    
     func handleRegionEvent(region: CLRegion!) {
         // Show an alert if application is active
         if UIApplication.sharedApplication().applicationState == .Active {
@@ -71,12 +79,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
     func locationManager(manager: CLLocationManager, didEnterRegion region: CLRegion) {
         if region is CLCircularRegion {
             handleRegionEvent(region)
+            
         }
     }
     
     func locationManager(manager: CLLocationManager, didExitRegion region: CLRegion) {
         if region is CLCircularRegion {
-            print("left region")
+            //NSNotificationCenter.defaultCenter().postNotificationName("reload", object: nil)
         }
     }
 

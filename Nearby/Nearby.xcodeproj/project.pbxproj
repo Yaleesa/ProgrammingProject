@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		52006CA81C4E5FD10078F7EF /* gpxgmap_converted-2.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 52006CA71C4E5FD10078F7EF /* gpxgmap_converted-2.gpx */; };
+		52006CAA1C511DE10078F7EF /* gpxgmap_converted-3.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 52006CA91C511DE10078F7EF /* gpxgmap_converted-3.gpx */; };
+		52006CAC1C511EA50078F7EF /* gpxgmap_converted-4.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 52006CAB1C511EA50078F7EF /* gpxgmap_converted-4.gpx */; };
+		52006CAE1C5121F70078F7EF /* gpxgmap_converted-5.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 52006CAD1C5121F70078F7EF /* gpxgmap_converted-5.gpx */; };
+		52006CB01C51378C0078F7EF /* gpxgmap_converted-6.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 52006CAF1C51378B0078F7EF /* gpxgmap_converted-6.gpx */; };
 		522AFEE31C40601E00B0C0A6 /* FavoritesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522AFEE21C40601E00B0C0A6 /* FavoritesTableViewController.swift */; };
 		528297241C3D43E90003C8B2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 528297231C3D43E90003C8B2 /* AppDelegate.swift */; };
 		528297261C3D43E90003C8B2 /* NearbyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 528297251C3D43E90003C8B2 /* NearbyViewController.swift */; };
@@ -52,6 +56,10 @@
 /* Begin PBXFileReference section */
 		4856C7E4F8E0CC56A0D930CD /* Pods-Nearby.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Nearby.release.xcconfig"; path = "Pods/Target Support Files/Pods-Nearby/Pods-Nearby.release.xcconfig"; sourceTree = "<group>"; };
 		52006CA71C4E5FD10078F7EF /* gpxgmap_converted-2.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = "gpxgmap_converted-2.gpx"; path = "../../../../Downloads/gpxgmap_converted-2.gpx"; sourceTree = "<group>"; };
+		52006CA91C511DE10078F7EF /* gpxgmap_converted-3.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = "gpxgmap_converted-3.gpx"; path = "../../../../Downloads/gpxgmap_converted-3.gpx"; sourceTree = "<group>"; };
+		52006CAB1C511EA50078F7EF /* gpxgmap_converted-4.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = "gpxgmap_converted-4.gpx"; path = "../../../../Downloads/gpxgmap_converted-4.gpx"; sourceTree = "<group>"; };
+		52006CAD1C5121F70078F7EF /* gpxgmap_converted-5.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = "gpxgmap_converted-5.gpx"; path = "../../../../Downloads/gpxgmap_converted-5.gpx"; sourceTree = "<group>"; };
+		52006CAF1C51378B0078F7EF /* gpxgmap_converted-6.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = "gpxgmap_converted-6.gpx"; path = "../../../../Downloads/gpxgmap_converted-6.gpx"; sourceTree = "<group>"; };
 		522AFEE21C40601E00B0C0A6 /* FavoritesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoritesTableViewController.swift; sourceTree = "<group>"; };
 		528297201C3D43E90003C8B2 /* Nearby.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Nearby.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		528297231C3D43E90003C8B2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -174,7 +182,11 @@
 			isa = PBXGroup;
 			children = (
 				528297251C3D43E90003C8B2 /* NearbyViewController.swift */,
+				52006CAF1C51378B0078F7EF /* gpxgmap_converted-6.gpx */,
 				52006CA71C4E5FD10078F7EF /* gpxgmap_converted-2.gpx */,
+				52006CAD1C5121F70078F7EF /* gpxgmap_converted-5.gpx */,
+				52006CAB1C511EA50078F7EF /* gpxgmap_converted-4.gpx */,
+				52006CA91C511DE10078F7EF /* gpxgmap_converted-3.gpx */,
 				5288BF6F1C48043E009A9280 /* TestLocations.gpx */,
 			);
 			name = MapView;
@@ -318,7 +330,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				52006CAA1C511DE10078F7EF /* gpxgmap_converted-3.gpx in Resources */,
+				52006CAE1C5121F70078F7EF /* gpxgmap_converted-5.gpx in Resources */,
+				52006CB01C51378C0078F7EF /* gpxgmap_converted-6.gpx in Resources */,
 				5282972E1C3D43E90003C8B2 /* LaunchScreen.storyboard in Resources */,
+				52006CAC1C511EA50078F7EF /* gpxgmap_converted-4.gpx in Resources */,
 				5282972B1C3D43E90003C8B2 /* Assets.xcassets in Resources */,
 				528297291C3D43E90003C8B2 /* Main.storyboard in Resources */,
 				5288BF701C48043E009A9280 /* TestLocations.gpx in Resources */,
