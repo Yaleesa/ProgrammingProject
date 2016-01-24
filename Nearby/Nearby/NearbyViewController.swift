@@ -294,8 +294,6 @@ class NearbyViewController: UIViewController, MKMapViewDelegate, CLLocationManag
             pinView?.canShowCallout = true
             
             let rightButton = UIButton(type: .Custom)
-            //var rightButton: AnyObject! = UIButton.buttonWithType(UIButtonType.DetailDisclosure)
-            //rightButton.titleForState(UIControlState.Normal)
             rightButton.frame.size.width = 44
             rightButton.frame.size.height = 60
             rightButton.backgroundColor = UIColor.lightGrayColor()
@@ -310,7 +308,25 @@ class NearbyViewController: UIViewController, MKMapViewDelegate, CLLocationManag
     }
     
     func mapView(mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
-        //
+        if control == view.rightCalloutAccessoryView {
+            print("Disclosure Pressed! \(view.annotation!.title)")
+            var selectedLoc = view.annotation
+            
+            let currentLocMapItem = MKMapItem.mapItemForCurrentLocation()
+            
+            let selectedPlacemark = MKPlacemark(coordinate: selectedLoc!.coordinate, addressDictionary: nil)
+            let selectedMapItem = MKMapItem(placemark: selectedPlacemark)
+            
+            let mapItems = [selectedMapItem, currentLocMapItem]
+            
+            let launchOptions = [MKLaunchOptionsDirectionsModeKey: MKLaunchOptionsDirectionsModeWalking]
+            
+            MKMapItem.openMapsWithItems(mapItems, launchOptions:launchOptions)
+            
+//            if let cpa = view.annotation as? CustomPointAnnotation {
+//                print("cpa.imageName = \(cpa.imageName)")
+//            }
+        }
     }
     
     func showRoute(response: MKDirectionsResponse) {
