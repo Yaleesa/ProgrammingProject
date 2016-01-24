@@ -51,6 +51,31 @@
 - werkt, maar alleen met unieke identifiers
 - en de accuratie is bagger
 
+###Day 11 Maandag
+- identifiers verbouwd naar straat en huisnummer
+- gekeken naar de accuracy, wellicht goede code gevonden
+
+###Day 12 Dinsdag
+- kleine bugs fixen
+
+###Day 13 Woensdag
+- Favorieten toevoegen en verwijderen
+- Updaten van regions als er iets is veranderd
+
+###Day 14 Donderdag 
+- Refresh ingebouwd als er 1km word verplaats word er gezocht en gemonitord naar nieuwe plaatsen
+- Annotaties custom gemaakt, kan op geklikt worden
+
+###Day 15 Vrijdag 
+
+
+
+
+
+
+
+
+
 
 
 

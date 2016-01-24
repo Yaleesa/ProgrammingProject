@@ -285,7 +285,6 @@ class NearbyViewController: UIViewController, MKMapViewDelegate, CLLocationManag
         if annotation is MKUserLocation {
             return nil
         }
-        print("YAY")
         
         let reuseId = "pin"
         
@@ -311,8 +310,7 @@ class NearbyViewController: UIViewController, MKMapViewDelegate, CLLocationManag
     }
     
     func mapView(mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
-        // Delete geotification
-        showRoute(<#T##response: MKDirectionsResponse##MKDirectionsResponse#>)
+        //
     }
     
     func showRoute(response: MKDirectionsResponse) {

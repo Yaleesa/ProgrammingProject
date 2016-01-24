@@ -84,7 +84,7 @@
       <AdditionalOptions>
       </AdditionalOptions>
       <LocationScenarioReference
-         identifier = "../../../../Downloads/gpxgmap_converted-2.gpx"
+         identifier = "../../../../Downloads/gpxgmap_converted-5.gpx"
          referenceType = "0">
       </LocationScenarioReference>
    </LaunchAction>
