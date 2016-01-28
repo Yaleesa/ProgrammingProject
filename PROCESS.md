@@ -68,6 +68,30 @@
 
 ###Day 15 Vrijdag 
 
+- presentatie/bier drinken
+
+###Day 16 Monday 
+
+- fixed bug MKLocalsearch and zooming in
+- Annotation button triggered apple Maps voor location
+- App icon gemaakt
+
+###Day 17 Tuesday
+
+- code verplaatsen naar goede file
+- natuurlijk alles kapot gemaakt
+
+###Day 18 Woensdag
+
+- code review en comments geschreven
+
+###Day 19 Donderdag
+
+- layout mooi gemaakt
+- icoontjes naar hogere resolutie
+- searchbar weggehaald
+- launch screen gemaakt
+- unknown location apple maps bug gefixed
 
 
 #LINKS
