@@ -54,7 +54,7 @@ class NearbyViewController: UIViewController, MKMapViewDelegate, CLLocationManag
         /* defining a notification  for the restartSearchandMonitor main function, */
         /* used when adding and deleting objects in the tableviews */
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "restartSearchandMonitor", name: "reload", object: nil)
-        
+    
     }
     /* main function to restart the search and monitor, there is a dispatch_after because the monitor will have to wait for the search */
     func restartSearchandMonitor(){

@@ -68,6 +68,11 @@ class FavoritesTableViewController: UITableViewController {
         return storedFavorites
     }
     
+    /* when cell is tapped, go to map tab. testers intuitively did this while testing, it has no other use */
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        tabBarController?.selectedIndex = 2
+    }
+    
     /* enabled to allow editing */
     override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
          //Return false if you do not want the specified item to be editable.
