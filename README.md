@@ -11,7 +11,7 @@ So that is the idea, location based notifications for custom locations chosen by
 
 ### Sreenshots 
 
-![sketch](doc/screenshots.png =800x400)
+![sketch](doc/screenshots.png)
 
 
 ### External use of:
