@@ -10,29 +10,20 @@
         <scene sceneID="SlS-KY-mOW">
             <objects>
                 <tableViewController title="Items" id="oYy-AY-Feh" customClass="VenueTableViewController" customModule="Nearby" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="98" sectionHeaderHeight="28" sectionFooterHeight="28" id="Ehu-86-BKR">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" keyboardDismissMode="onDrag" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="98" sectionHeaderHeight="28" sectionFooterHeight="28" id="Ehu-86-BKR">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <searchBar key="tableHeaderView" contentMode="redraw" placeholder="Search Venues" id="zbc-L7-h5C">
-                            <rect key="frame" x="0.0" y="64" width="600" height="44"/>
-                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                            <animations/>
-                            <textInputTraits key="textInputTraits"/>
-                        </searchBar>
+                        <color key="separatorColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="VenueTableViewCell" selectionStyle="none" indentationWidth="10" reuseIdentifier="VenueTableViewCell" rowHeight="90" id="bQH-Nv-rc3" userLabel="VenueTableViewCell" customClass="VenueTableViewCell" customModule="Nearby" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="136" width="600" height="90"/>
+                                <rect key="frame" x="0.0" y="92" width="600" height="90"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="bQH-Nv-rc3" id="WKX-B5-Use">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="89.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="90"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sLU-bx-CLB">
-                                            <rect key="frame" x="0.0" y="0.0" width="90" height="90"/>
-                                            <animations/>
-                                        </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bOo-Sd-Aay">
                                             <rect key="frame" x="98" y="34" width="277" height="21"/>
                                             <animations/>
@@ -41,18 +32,22 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="contactAdd" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ruO-u8-Aia">
-                                            <rect key="frame" x="560" y="33" width="22" height="22"/>
+                                            <rect key="frame" x="560" y="34" width="22" height="22"/>
                                             <animations/>
                                             <connections>
                                                 <action selector="addFav:" destination="oYy-AY-Feh" eventType="touchUpInside" id="HG6-7V-B6h"/>
                                                 <action selector="customAdd:" destination="bQH-Nv-rc3" eventType="touchUpInside" id="toq-2g-Y0E"/>
                                             </connections>
                                         </button>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sLU-bx-CLB">
+                                            <rect key="frame" x="0.0" y="0.0" width="90" height="90"/>
+                                            <animations/>
+                                        </imageView>
                                     </subviews>
                                     <animations/>
                                     <constraints>
-                                        <constraint firstAttribute="trailingMargin" secondItem="ruO-u8-Aia" secondAttribute="trailing" constant="10" id="DLR-af-03C"/>
-                                        <constraint firstItem="ruO-u8-Aia" firstAttribute="centerY" secondItem="WKX-B5-Use" secondAttribute="centerY" id="DtB-sh-IMN"/>
+                                        <constraint firstItem="ruO-u8-Aia" firstAttribute="centerY" secondItem="WKX-B5-Use" secondAttribute="centerY" id="f6J-mV-NVm"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="ruO-u8-Aia" secondAttribute="trailing" constant="10" id="kQx-7I-r9Z"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <animations/>
@@ -138,8 +133,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="S6E-ph-ktb">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="551"/>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="S6E-ph-ktb">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="556"/>
                                 <animations/>
                             </mapView>
                         </subviews>
@@ -156,7 +151,7 @@
                         <barButtonItem title="Item" id="hga-Fz-2X3"/>
                     </toolbarItems>
                     <navigationItem key="navigationItem" title="Map" id="9Le-U1-ZX5">
-                        <barButtonItem key="rightBarButtonItem" systemItem="refresh" id="bLH-Qu-n8b">
+                        <barButtonItem key="rightBarButtonItem" image="more" id="bLH-Qu-n8b">
                             <connections>
                                 <action selector="searchButton:" destination="BYZ-38-t0r" id="1v8-Xc-JDY"/>
                             </connections>
@@ -235,7 +230,7 @@
         <scene sceneID="raB-gf-wc4">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="dR7-eL-eLd" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Map" id="7R3-r4-YG6"/>
+                    <tabBarItem key="tabBarItem" title="Map" image="map_marker-3" selectedImage="map_marker-3" id="7R3-r4-YG6"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Lna-gk-mnl">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -252,4 +247,8 @@
             <point key="canvasLocation" x="1908" y="1047"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="map_marker-3" width="25" height="25"/>
+        <image name="more" width="22" height="22"/>
+    </resources>
 </document>

@@ -10,101 +10,87 @@ import UIKit
 
 class FavoritesTableViewController: UITableViewController {
     
-
     let defaults = NSUserDefaults.standardUserDefaults()
-    
 
-    
     var storedFavorites: [String] = ["No Favorites"]
     
-    //print(FavData())
-
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        FavData()
-        
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        /* get the data! */
+        favData()
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 
     // MARK: - Table view data source
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         return 1
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
         return storedFavorites.count
     }
 
-    
+    /* shows the data, received from storedFavorites */
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cellIdentifier = "FavoriteTableViewCell"
         let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath) as! FavoriteTableViewCell
 
-        
         cell.favLabel.text = storedFavorites[indexPath.row]
-        
         let imageName = UIImage(named: storedFavorites[indexPath.row])
         cell.favImage?.image = imageName
 
         return cell
     }
     
+    /* reloads when the view appears to make sure the data is correct */
     override func viewDidAppear(animated: Bool) {
         let nav = self.navigationController?.navigationBar
-        nav?.barStyle = UIBarStyle.Black
-        
-        FavData()
+        let image = UIImage(named: "barImage2")! as UIImage
+        nav!.setBackgroundImage(image, forBarMetrics: .Default)
+        favData()
         self.tableView.reloadData()
-
     }
     
-    func FavData() -> [String] {
-        if self.defaults.stringArrayForKey("favoriteKey") != nil{
-            storedFavorites = self.defaults.stringArrayForKey("favoriteKey")!
-        }else{
+    /* getting the data from NSUserdefaults, if its empty, its empty */
+    func favData() -> [String] {
+        if self.defaults.stringArrayForKey("favoriteKey") == nil{
             storedFavorites = ["No Favorites"]
+        } else if self.defaults.stringArrayForKey("favoriteKey")! == [] {
+            storedFavorites = ["No Favorites"]
+        } else {
+            storedFavorites = self.defaults.stringArrayForKey("favoriteKey")!
         }
-
         return storedFavorites
     }
     
-     //Override to support conditional editing of the table view.
+    /* enabled to allow editing */
     override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
          //Return false if you do not want the specified item to be editable.
         return true
     }
-    
 
-    
-     //Override to support editing the table view.
+    /* delete edit is added, user can swipe and delete a favorite from the the table, table and app will update with the new info */
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        
         if editingStyle == .Delete {
-            //Delete the row from the data source
             storedFavorites.removeAtIndex(indexPath.row)
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
             defaults.setObject(storedFavorites, forKey: "favoriteKey")
-            let nearbyView = NearbyViewController()
-//            nearbyView.stopMonitoring()
-            //nearbyView.restartSearchandMonitor()
+            
+            favData()
+            self.tableView.reloadData()
 
             NSNotificationCenter.defaultCenter().postNotificationName("reload", object: nil)
-            
         }
     }
+    
+    
+    /* EXTRA APPLE STUFF */
 
     /*
     // Override to support rearranging the table view.

@@ -8,6 +8,7 @@
 
 import UIKit
 
+/* data model for the Venue data */
 class Venue {
     
     var name: String
@@ -16,7 +17,5 @@ class Venue {
     init(name: String, photo: UIImage?) {
         self.name = name
         self.photo = photo
-
     }
-    
 }

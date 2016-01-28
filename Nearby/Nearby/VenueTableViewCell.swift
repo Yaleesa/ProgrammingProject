@@ -10,6 +10,7 @@ import UIKit
 
 class VenueTableViewCell: UITableViewCell {
     
+    /* handles which of the cells is tapped */
     var tapped: ((VenueTableViewCell) -> Void)?
 
     @IBOutlet weak var venueImage: UIImageView!
@@ -18,18 +19,15 @@ class VenueTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
     }
     
+    /* made a button of a cell, for receiving the tap */
     @IBAction func customAdd(sender: AnyObject) {
-        
         tapped?(self)
     }
 
     override func setSelected(selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
     }
 
 }

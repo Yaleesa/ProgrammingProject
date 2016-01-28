@@ -5,6 +5,7 @@
 //  Created by Yaleesa Borgman on 06/01/16.
 //  Copyright © 2016 Yaleesa Borgman. All rights reserved.
 //
+//  App icon by Nathalie van der Veen
 
 import UIKit
 import CoreLocation
@@ -15,13 +16,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
     var window: UIWindow?
     let locationManager = CLLocationManager()
 
-
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        // Override point for customization after application launch.
+        
+        /* Init */
         locationManager.delegate = self
         locationManager.requestAlwaysAuthorization()
+        
+        /* Local notification init */
         application.registerUserNotificationSettings(UIUserNotificationSettings(forTypes: [.Alert , .Badge , .Sound], categories: nil))
         UIApplication.sharedApplication().cancelAllLocalNotifications()
+        
+        /* get user location and start the application */
+        self.locationManager.startUpdatingLocation()
+
         return true
     }
 
@@ -48,16 +55,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
     }
     
     
-//    func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-//        print(manager.location)
-//        
-//        
-//    }
-    
+    /* starts notifications when entering a region, Alert when view is active, Notification when not */
     func handleRegionEvent(region: CLRegion!) {
-        // Show an alert if application is active
         if UIApplication.sharedApplication().applicationState == .Active {
-            //if let message = {
                 if let viewController = window?.rootViewController {
                     let title = "Nearby"
                     let message = "\(region.identifier) is nearby!"
@@ -66,29 +66,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
                     alert.addAction(action)
                     viewController.presentViewController(alert, animated: true, completion: nil)
                 }
-            //}
         } else {
-            // Otherwise present a local notification
             let notification = UILocalNotification()
             notification.alertBody = "\(region.identifier) is Nearby!"
             notification.soundName = "Default";
             UIApplication.sharedApplication().presentLocalNotificationNow(notification)
         }
     }
-
+    
+    /* locationmanager function for monitoring an entering of a region */
     func locationManager(manager: CLLocationManager, didEnterRegion region: CLRegion) {
         if region is CLCircularRegion {
             handleRegionEvent(region)
-            
         }
     }
     
-    func locationManager(manager: CLLocationManager, didExitRegion region: CLRegion) {
-        if region is CLCircularRegion {
-            //NSNotificationCenter.defaultCenter().postNotificationName("reload", object: nil)
-        }
+    /* error handling for location manager */
+    func locationManager(manager: CLLocationManager, didFailWithError error: NSError) {
+        print("Errors: " + error.localizedDescription)
     }
-
-
 }
 
