@@ -44,7 +44,7 @@ Nearby is een iOS App die de gebruiker een notificatie stuurt als hij of zij in 
 
 **Datamodel (Venues.swift)**
 
-- data model met een init voor namen en photos van Venues.
+- data model met een init voor namen en photos van Venues. 
 
 ### Challenges and Changes
 
